@@ -1,5 +1,6 @@
 package com.ecommerce.productservice.service;
 
+import com.ecommerce.productservice.dto.InventoryResponse;
 import com.ecommerce.productservice.dto.ProductRequest;
 import com.ecommerce.productservice.dto.ProductResponse;
 import com.ecommerce.productservice.model.Product;
@@ -52,5 +53,15 @@ public class ProductServiceImpl implements ProductService {
                 product.getPrice(),
                 product.getStockQuantity()
         );
+    }
+
+    // Add this method to your ProductService interface and ProductServiceImpl:
+    public List<InventoryResponse> isInStock(List<String> skuCodes) {
+        return productRepository.findAll().stream()
+                .filter(product -> skuCodes.contains(product.getName()))
+                .map(product -> new InventoryResponse(
+                        product.getName(),
+                        product.getStockQuantity() > 0
+                )).toList();
     }
 }

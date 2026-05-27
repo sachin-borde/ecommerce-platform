@@ -1,5 +1,6 @@
 package com.ecommerce.productservice.service;
 
+import com.ecommerce.productservice.dto.InventoryResponse;
 import com.ecommerce.productservice.dto.ProductRequest;
 import com.ecommerce.productservice.dto.ProductResponse;
 
@@ -9,4 +10,6 @@ public interface ProductService {
     ProductResponse createProduct(ProductRequest productRequest);
 
     List<ProductResponse> getAllProducts();
+
+    List<InventoryResponse> isInStock(List<String> skuCodes);
 }
