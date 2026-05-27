@@ -1,0 +1,20 @@
+server:
+  port: 8081  # Standardizing port for the Product Service
+
+spring:
+  application:
+    name: product-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce_product_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # Automatically creates/updates tables based on your Java entities
+    show-sql: true      # Logs SQL queries in the console (great for debugging)
+    properties:
+      hibernate:
+        format_sql: true
